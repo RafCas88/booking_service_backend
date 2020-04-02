@@ -28,7 +28,7 @@ public class Booking {
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
-            name = "tables_bookings";
+            name = "tables_bookings",
             joinColumns = {@JoinColumn(name = "booking_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "table_id", nullable = false, updatable = false)}
 
@@ -38,7 +38,7 @@ public class Booking {
     public Booking(LocalTime bookingTime, LocalDate bookingDate) {
         this.bookingTime = bookingTime;
         this.bookingDate = bookingDate;
-        this.restaurantTables = new ArrayList<RestaurantTable>();
+        this.restaurantTables = new ArrayList<>();
     }
 
     public Booking() {
