@@ -1,5 +1,6 @@
 package com.codeclan.example.bookingservice.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 
@@ -52,6 +53,7 @@ public class Booking {
         this.bookingTime = bookingTime;
     }
 
+    @JsonFormat(pattern="dd-MM-yyyy")
     public LocalDate getBookingDate() {
         return bookingDate;
     }

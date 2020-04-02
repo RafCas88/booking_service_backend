@@ -17,7 +17,7 @@ public class Customer {
     private String lastName;
 
     @Column(name = "telephone_number")
-    private int telephoneNumber;
+    private String telephoneNumber;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +27,7 @@ public class Customer {
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
-    public Customer(String firstName, String lastName, int telephoneNumber) {
+    public Customer(String firstName, String lastName, String telephoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.telephoneNumber = telephoneNumber;
@@ -54,11 +54,11 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public int getTelephoneNumber() {
+    public String getTelephoneNumber() {
         return telephoneNumber;
     }
 
-    public void setTelephoneNumber(int telephoneNumber) {
+    public void setTelephoneNumber(String telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
     }
 
