@@ -27,7 +27,7 @@ public class RestaurantTable {
     @JoinTable(
             name = "tables_bookings",
             joinColumns = {@JoinColumn(name = "table_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name="booking_id", nullable = false, updatable = false)}
+            inverseJoinColumns = {@JoinColumn(name = "booking_id", nullable = false, updatable = false)}
     )
 
     private List<Booking> bookings;
@@ -72,5 +72,9 @@ public class RestaurantTable {
 
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
+    }
+
+    public void addBooking(Booking booking) {
+        this.bookings.add(booking);
     }
 }

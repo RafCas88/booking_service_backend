@@ -25,6 +25,10 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
+
     @JsonIgnoreProperties("bookings")
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
@@ -36,10 +40,11 @@ public class Booking {
     )
     private List<RestaurantTable> restaurantTables;
 
-    public Booking(LocalTime bookingTime, LocalDate bookingDate) {
+    public Booking(LocalTime bookingTime, LocalDate bookingDate, Customer customer) {
         this.bookingTime = bookingTime;
         this.bookingDate = bookingDate;
         this.restaurantTables = new ArrayList<>();
+        this.customer = customer;
     }
 
     public Booking() {
@@ -76,5 +81,17 @@ public class Booking {
 
     public void setRestaurantTables(List<RestaurantTable> restaurantTables) {
         this.restaurantTables = restaurantTables;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public void addRestaurantTable(RestaurantTable restaurantTable) {
+        this.restaurantTables.add(restaurantTable);
     }
 }
